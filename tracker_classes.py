@@ -16,7 +16,7 @@ def serialize(cls: type[Any]) -> type[Any]:
         this is not trivial because both of them have date variables. This decorator 
         adds a serilaization method to a class, converting not (int, str or bool) to str.
     '''
-    def serialize(self) -> dict[str, Any]:
+    def _serialize(self) -> dict[str, Any]:
         result = {}
         for key, value in asdict(self).items():
             if not isinstance(value, (int, str, bool)):
@@ -24,7 +24,7 @@ def serialize(cls: type[Any]) -> type[Any]:
             result[key] = value
         return result
 
-    setattr(cls, 'serialize', serialize)
+    setattr(cls, '_serialize', _serialize)
     return cls
 
 
@@ -91,7 +91,7 @@ class CheckOff:
             loading the whole collection from the file to memory, as there will be a long 
             history of check-offs at some point this will save time and memory.
         '''
-        to_save = json.dumps(self.serialize())   # type: ignore[attr-defined]
+        to_save = json.dumps(self._serialize())   # type: ignore[attr-defined]
         try:
             with open(file_name, "r+", encoding="UTF-8") as file:    
                 file.seek(0,2)                   # set the file pointer to end of the file
@@ -153,7 +153,7 @@ class ObjectManager:
         ''' Streaming objects to JSON file from source: list or generator.
             Simplejson mudule used as json to serialize Iterable object.
         '''
-        to_save = json.dumps((obj.serialize() for obj in source), iterable_as_array=True) 
+        to_save = json.dumps((obj._serialize() for obj in source), iterable_as_array=True) 
         with open(self.file_name, "w", encoding="UTF-8") as file:
             file.write(to_save)
      
