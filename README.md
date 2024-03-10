@@ -24,12 +24,12 @@ Once you have a habit, you can check it off in Check-offs menu each time you com
 
 After you have at least 2 check-offs you can review full habit statistics in Dashboard.
 
-![tracker_stats](https://github.com/shevchukum/habit_tracker/assets/161697125/b34a7141-5c12-4436-9abd-1c78725f77a1)
+![image](https://github.com/shevchukum/habit_tracker/assets/161697125/1433ddae-420f-4d65-8ce1-323bc06ab905)
 
-1. Per old - how many periods (days or weeks depending on the type of the habit: daily or weekly) ago description of the habit was changed.
+1. Tenure - how many periods (days or weeks depending on the type of the habit: daily or weekly) ago description of the habit was changed.
 2. Status: "Not started" if no check-offs yet, "Streak" if the last check-off was in the period of the habit, "Broken" if one or more periods missed.
 3. Streak - how long is current streak in periods.
-4. Missed per - how many full periods (days or weeks) missed if the habit is broken.
+4. Hiatus - how many full periods (days or weeks) missed if the habit is broken.
 5. Max streak length in periods in the history of this habit.
 6. Average emotion over the last (by default 5) periods from 0 to 5.
 7. Emo trend is a slope sign of the regression over the last (5) periods. Negative means emotions are trending down and may be it's time to change something.
