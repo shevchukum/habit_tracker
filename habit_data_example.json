@@ -1,6 +1,0 @@
-[{"title": "Evening meditation", "description": "Meditate 15min before sleep", "periodicity": "Daily", "created": "2024-02-01", "descr_update": "2024-02-11", "active": true}, 
- {"title": "Morning meditation", "description": "Meditate at 7:30m for 15 min", "periodicity": "Daily", "created": "2024-02-01", "descr_update": "2024-02-04", "active": true},
- {"title": "Morning run", "description": "Run for 20min at 8am", "periodicity": "Daily", "created": "2024-02-01", "descr_update": "2024-02-08", "active": true}, 
- {"title": "Evening yoga", "description": "Yoga for 1.5h at 19pm", "periodicity": "Weekly", "created": "2024-02-01", "descr_update": "2024-02-01", "active": true}, 
- {"title": "Sweaming in pool", "description": "Sweaming for 30min in a community pool", "periodicity": "Weekly", "created": "2024-02-01", "descr_update": "2024-02-01", "active": true},
- {"title": "Not started habit", "description": "Not started habit", "periodicity": "Daily", "created": "2024-02-01", "descr_update": "2024-02-15", "active": true}]
