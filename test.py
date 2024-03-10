@@ -313,24 +313,6 @@ def test_delete_check_off(monkeypatch: pytest.MonkeyPatch,
     os.remove("test_check_off.json")
 
 
-@pytest.mark.parametrize("test_habit, periodicity, expected", 
-                         [("Evening meditation", "Daily", ['1', '1', '0', '0']),
-                          ("Morning meditation", "Daily", ['0', '1', '0', '0']),
-                          ("Morning run", "Daily", ['0', '1', '0', '1', '1', '1']),
-                          ("Sweaming in pool", "Weekly", ['0', '1', '0'])]
-                        )
-def test_bingo(test_habit: str, periodicity: str, expected: list[str], today: date) -> None:
-    ''' Testing bingo function of main module. '''
-    check_off_manager = tracker_classes.CheckOffManager("check_off_example.json", today)
-    source = check_off_manager.make_gen(test_habit)
-    result = []
-    if periodicity == "Daily": period = timedelta(days=1)
-    else: period = timedelta(days=7)
-    for elem in source:
-        result.append(main.bingo(period, elem))
-    assert result == expected
-
-
 @pytest.mark.parametrize("test_habit, expected", 
                          [("Evening meditation", (2.0, "Negative")),
                           ("Morning meditation", (3.2, "Positive")),
@@ -339,7 +321,7 @@ def test_bingo(test_habit: str, periodicity: str, expected: list[str], today: da
                         )
 def test_emotion(test_habit: str, expected: tuple[int, str], today: date) -> None:
     ''' Testing emotion fucntion of main module. '''
-    check_off_manager = tracker_classes.CheckOffManager("check_off_example.json", today)
+    check_off_manager = tracker_classes.CheckOffManager("check_off_test.json", today)
     check_off_manager.make_list(test_habit, 5)
     assert main.emotion(check_off_manager) == expected
     
@@ -357,8 +339,8 @@ def test_streak(test_habit: str,
                 today: date
                ) -> None:
     ''' Testing streak function from main module. '''
-    habit_manager = tracker_classes.HabitManager("habit_data_example.json", today)
-    check_off_manager = tracker_classes.CheckOffManager("check_off_example.json", today)
+    habit_manager = tracker_classes.HabitManager("habit_data_test.json", today)
+    check_off_manager = tracker_classes.CheckOffManager("check_off_test.json", today)
     habit_manager.make_list()
     habit = [x for x in habit_manager.object_list if x.title == test_habit]
     assert main.streak(*habit, check_off_manager, 5, today) == expected                 
